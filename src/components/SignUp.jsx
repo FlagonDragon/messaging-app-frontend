@@ -6,7 +6,7 @@ async function fetchToken(username, password, navigate) {
 
     console.log({username: username, password: password});
     
-    const response = await fetch("https://blog-api-iv3t.onrender.com/sign-up", {
+    const response = await fetch("https://messaging-app-f3bk.onrender.com/sign-up", {
         method: "POST",
         body: JSON.stringify({ username: username, password: password }),
         headers: {'Content-type': 'application/json'},

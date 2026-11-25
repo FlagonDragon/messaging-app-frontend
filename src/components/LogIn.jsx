@@ -4,10 +4,9 @@ import '../styles/styles.css';
 
 async function fetchToken(username, password, navigate) {
 
-
     console.log({username: username, password: password});
     
-    const response = await fetch("https://blog-api-iv3t.onrender.com/log-in", {
+    const response = await fetch("https://messaging-app-f3bk.onrender.com/log-in", {
         method: "POST",
         body: JSON.stringify({ username: username, password: password }),
         headers: {'Content-type': 'application/json'},
@@ -23,7 +22,7 @@ async function fetchToken(username, password, navigate) {
 
     console.log('Bearer '+localStorage.getItem('token'));
 
-    navigate(`/posts`);
+    // navigate(`/`);
     
 };
 
