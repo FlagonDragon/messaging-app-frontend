@@ -8,16 +8,12 @@ async function fetchChats() {
   try {
 
   console.log(localStorage.getItem('id'));
+
+  const userId = localStorage.getItem('id');
   
-  const response = await fetch("https://messaging-app-f3bk.onrender.com/user-chats", {
-    method: "POST",
-    body: JSON.stringify({ userId: localStorage.getItem('id')}),
-    headers: {'Content-type': 'application/json'},
-  });
+  const response = await fetch(`https://messaging-app-f3bk.onrender.com/user-chats/${userId}`);
 
   let chatsData = await response.json();
-
-  console.log(chatsData);
   
   return chatsData;
 
