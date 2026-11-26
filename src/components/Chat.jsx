@@ -1,18 +1,17 @@
 import { useState, useEffect } from "react";
 import { useLocation } from "react-router";
-import PostDiv from "./PostDiv";
 import CommentDiv from "./CommentDiv";
 import NewComment from "./NewComment";
 
-async function fetchComments(postId) {
+async function fetchMessages(postId) {
 
   try {
 
   const response = await fetch(`https://blog-api-iv3t.onrender.com/posts/${postId}`)
 
-  let commentsData = await response.json();
+  let messagesData = await response.json();
 
-  return commentsData;
+  return messagesData;
 
   } catch (error) {
 
@@ -22,57 +21,58 @@ async function fetchComments(postId) {
 
 };
 
-function Post() {
-  const [comments, setComments] = useState(null);
+function Chat() {
+  const [messages, setMessages] = useState(null);
   const [remount, setRemount] = useState(false);
 
-  const post = useLocation().state;
+  const chat = useLocation().state.chat;
 
-  useEffect(() => {
+  const otherUser = useLocation().state.otherUser;
+
+  console.log(chat);
+  console.log(otherUser);
+
+  // useEffect(() => {
       
-    async function fetchCommentsWrapper() {
+  //   async function fetchCommentsWrapper() {
 
-      try {        
+  //     try {        
 
-        const data = await fetchComments(post.id);
-        console.log(data);
-        setComments([]);
-        setComments(data);        
+  //       const data = await fetchMessages(chat.id);
+  //       console.log(data);
+  //       setMessages([]);
+  //       setMessages(data);        
         
-      } catch (error) {
-        console.error(error);
-      }
+  //     } catch (error) {
+  //       console.error(error);
+  //     }
 
-    }
+  //   }
 
-    fetchCommentsWrapper();
+  //   fetchCommentsWrapper();
       
-  }, [post.id, remount])
+  // }, [chat.id, remount])
   
   return(
   <>
 
-    <h1> Post </h1>
+    <h1> Talking to: {otherUser.username} </h1>
 
-    <PostDiv post={post}></PostDiv>
+    {/* <NewComment postId={post.id} handleClick={() => setRemount(!remount)}></NewComment> 
 
-    <h2> Comments </h2>
+    {console.log(comments)}
 
-    <NewComment postId={post.id} handleClick={() => setRemount(!remount)}></NewComment> 
-
-    {/* {console.log(comments)} */}
-
-    {comments && comments.map(comment => {
+    {messages && messages.map(message => {
 
       return (
-      <CommentDiv key={comment.id} comment={comment}></CommentDiv>
+      <CommentDiv key={message.id} message={message}></CommentDiv>
       )
 
-    })}
+    })} */}
     
   </>
   )
 
 }
 
-export default Post;
+export default Chat;

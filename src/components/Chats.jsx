@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-// import { useNavigate } from "react-router";
+import { useNavigate } from "react-router";
 import ChatDiv from "./ChatDiv";
 
 const userId = localStorage.getItem('id');
@@ -27,11 +27,11 @@ async function fetchChats() {
 function Chats() {
   const [chats, setChats] = useState(null);
 
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
 
-  // const handleClick = (chatId , state) => {
-  //   navigate(`/chats/${chatId}`, { state });
-  // }
+  const handleClick = (chatId , state) => {
+    navigate(`/chats/${chatId}`, { state });
+  }
   
   function findOtherUser(arr) {
 
@@ -87,7 +87,7 @@ function Chats() {
       
         <div 
           key={otherUser.username} 
-          // onClick={() => {handleClick(post.id, post)}}
+          onClick={() => {handleClick(chat.id, {chat: chat, otherUser: otherUser})}}
         >
 
           <ChatDiv username={otherUser.username}></ChatDiv>

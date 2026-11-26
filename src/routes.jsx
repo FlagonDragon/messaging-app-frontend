@@ -2,7 +2,7 @@
 // import { Children } from "react";
 import { Navigate } from "react-router";
 // import Home from "./components/Home";
-import Post from "./components/Post";
+import Chat from "./components/Chat";
 import Chats from "./components/Chats";
 import SignUp from "./components/SignUp";
 import LogIn from "./components/LogIn";
@@ -11,7 +11,7 @@ import ErrorPage from "./components/ErrorPage";
 const routes = [
   {
     path: "/",
-    element: <Navigate to="/log-in" replace />,
+    element: <Navigate to="/chats" replace />,
     errorElement: <ErrorPage />,
   },
   {
@@ -20,8 +20,8 @@ const routes = [
     errorElement: <ErrorPage />
   },
   {
-    path: "posts/:postId",
-    element: <Post />,
+    path: "chats/:chatId",
+    element: <Chat />,
     errorElement: <ErrorPage />
   },
   {
