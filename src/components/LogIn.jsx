@@ -18,11 +18,12 @@ async function fetchToken(username, password, navigate) {
 
     localStorage.setItem('token', data.token);
     localStorage.setItem('user', data.username);
+    localStorage.setItem('id', data.id);
     console.log(localStorage);
 
     console.log('Bearer '+localStorage.getItem('token'));
 
-    // navigate(`/`);
+    navigate(`/chats`);
     
 };
 

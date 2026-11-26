@@ -3,7 +3,7 @@
 import { Navigate } from "react-router";
 // import Home from "./components/Home";
 import Post from "./components/Post";
-import Posts from "./components/Posts";
+import Chats from "./components/Chats";
 import SignUp from "./components/SignUp";
 import LogIn from "./components/LogIn";
 import ErrorPage from "./components/ErrorPage";
@@ -15,8 +15,8 @@ const routes = [
     errorElement: <ErrorPage />,
   },
   {
-    path: "posts",
-    element: <Posts />,
+    path: "chats",
+    element: <Chats />,
     errorElement: <ErrorPage />
   },
   {
