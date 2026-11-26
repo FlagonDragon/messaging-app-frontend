@@ -1,17 +1,16 @@
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router";
-// import PostDiv from "./PostDiv";
+// import { useNavigate } from "react-router";
+import ChatDiv from "./ChatDiv";
 
+const userId = localStorage.getItem('id');
 
 async function fetchChats() {
 
   try {
 
-  console.log(localStorage.getItem('id'));
-
-  const userId = localStorage.getItem('id');
+  console.log(userId);
   
-  const response = await fetch(`https://messaging-app-f3bk.onrender.com/user-chats/${userId}`);
+  const response = await fetch(`https://messaging-app-f3bk.onrender.com/user-chats/2`);
 
   let chatsData = await response.json();
   
@@ -28,64 +27,76 @@ async function fetchChats() {
 function Chats() {
   const [chats, setChats] = useState(null);
 
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
-  const handleClick = (chatId , state) => {
-    navigate(`/CHATS/${chatId}`, { state });
+  // const handleClick = (chatId , state) => {
+  //   navigate(`/chats/${chatId}`, { state });
+  // }
+  
+  function findOtherUser(arr) {
+
+    var otherUser = '';
+
+    arr.forEach(user => {
+
+      if (user.id != userId) {
+        otherUser = user;
+        return;
+      }
+
+    });
+    
+    return otherUser;
+
   }
 
   useEffect(() => {
   
-      async function fetchChatsWrapper() {
-  
-        try {        
-  
-          const data = await fetchChats();
-          // console.log(data);
-          setChats(data);
-          
-        } catch (error) {
-          console.error(error);
-        }
-  
+    async function fetchChatsWrapper() {
+
+      try {        
+
+        const data = await fetchChats();
+        
+        setChats(data);
+        
+      } catch (error) {
+        console.error(error);
       }
-  
-      fetchChatsWrapper();
+
+    }
+
+    fetchChatsWrapper();
   
   }, [])
 
-  console.log('pre');
   console.log(chats);
-  // console.log(Array.isArray(posts));
-  console.log('post');
-
-  // let myArr = [{id: 1, title: 'title1', content: 'content1'}, {id: 2, title: 'title2', content: 'content2'}]
-
+ 
   return(
   <>
 
     <h1> Chats </h1>
-{/* 
-    {posts && posts.map(post => {
 
-      if (post.published == true) {
+    {chats && chats.map(chat => {
 
-        return (
-        
-          <div 
-            key={post.id} 
-            onClick={() => {handleClick(post.id, post)}}
-          >
+      let otherUser = findOtherUser(chat.users);
 
-            <PostDiv post={post}></PostDiv>
+      console.log(otherUser.username);
+      
+      return (
+      
+        <div 
+          key={otherUser.username} 
+          // onClick={() => {handleClick(post.id, post)}}
+        >
 
-          </div>
+          <ChatDiv username={otherUser.username}></ChatDiv>
 
-        )
+        </div>
 
-      }
+      )
 
-    })} */}
+    })}
 
   </>
   )
