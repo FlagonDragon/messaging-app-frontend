@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import { useLocation } from "react-router";
 import MessageDiv from "./MessageDiv";
-import NewComment from "./NewComment";
 
 async function fetchMessages(postId) {
 
@@ -56,7 +55,7 @@ function Chat() {
   return(
   <>
 
-    <h1> Talking to: {otherUser.username} </h1>
+    <h1> {otherUser.username} </h1>
 
     <button onClick={() => setRemount(!remount)}>Refresh</button> 
 
@@ -66,7 +65,7 @@ function Chat() {
 
       return (
       // <div>{message.content}</div>
-      <MessageDiv key={message.id} message={message}></MessageDiv>
+      <MessageDiv key={message.id} message={message} localUser={message.username == localStorage.getItem('user')}></MessageDiv>
       )
 
     })} 

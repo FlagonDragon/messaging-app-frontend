@@ -31,12 +31,28 @@ h3 {
     height: 150px;
 }
 
-.commentContainer {
+.userMessage {
     display: flex;
     flex-direction: column;
     justify-content: start;
     align-items: start;
     background-color: greenyellow;
+    color: black;
+    border: 3px solid black;
+    border-radius: 10px;
+    margin: 20px;
+    padding: 15px;
+    padding-left: 30px;
+    gap: 5px;
+    height: 75px;
+}
+
+.otherUserMessage {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: start;
+    background-color: hotpink;
     color: black;
     border: 3px solid black;
     border-radius: 10px;
