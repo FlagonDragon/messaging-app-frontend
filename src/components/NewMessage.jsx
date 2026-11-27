@@ -48,7 +48,7 @@ function NewMessage({ chatId, handleClick }) {
     <form onSubmit={e => e.preventDefault()}>
 
       <textarea
-        className="messageContent"
+        className="messageArea"
         name="messageContent"
         value={value}
         onChange={(e) => setValue(e.target.value)}

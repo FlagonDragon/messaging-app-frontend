@@ -78,20 +78,35 @@ h3 {
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    border: 3px solid blue;
+    /* border: 3px solid blue; */
     gap: 15px;
     width: 85%;
     max-width: 800px;
+    margin-bottom: 80px;
 }
 
 .newMessageContainer form {
     width: 100%;
 }
 
-.messageContent {
+.messageArea {
     width: 100%;
     min-width: 300px;
     max-width: 800px;
+    height: 70px;
+}
+
+.newMessageContainer button {
+    border: 3px solid black;
+    border-radius: 25px;
+    margin-top: 15px;
+    width: 100px;
+    height: 35px;
+}
+
+a {
+    margin: 25px;
+    color: greenyellow;
 }
 
 .formContainer {
@@ -101,9 +116,4 @@ h3 {
     align-items: center;
     margin: 25px;
     gap: 20px;
-}
-
-a {
-    margin: 25px;
-    color: greenyellow;
 }
