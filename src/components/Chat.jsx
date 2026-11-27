@@ -1,13 +1,13 @@
 import { useState, useEffect } from "react";
 import { useLocation } from "react-router";
-import CommentDiv from "./CommentDiv";
+import MessageDiv from "./MessageDiv";
 import NewComment from "./NewComment";
 
 async function fetchMessages(postId) {
 
   try {
 
-  const response = await fetch(`https://blog-api-iv3t.onrender.com/posts/${postId}`)
+  const response = await fetch(`https://messaging-app-f3bk.onrender.com/chat-messages/${postId}`)
 
   let messagesData = await response.json();
 
@@ -32,43 +32,44 @@ function Chat() {
   console.log(chat);
   console.log(otherUser);
 
-  // useEffect(() => {
+  useEffect(() => {
       
-  //   async function fetchCommentsWrapper() {
+    async function fetchMessagesWrapper() {
 
-  //     try {        
+      try {        
 
-  //       const data = await fetchMessages(chat.id);
-  //       console.log(data);
-  //       setMessages([]);
-  //       setMessages(data);        
+        const data = await fetchMessages(chat.id);
+        console.log(data);
+        setMessages([]);
+        setMessages(data);        
         
-  //     } catch (error) {
-  //       console.error(error);
-  //     }
+      } catch (error) {
+        console.error(error);
+      }
 
-  //   }
+    }
 
-  //   fetchCommentsWrapper();
+    fetchMessagesWrapper();
       
-  // }, [chat.id, remount])
+  }, [chat.id, remount])
   
   return(
   <>
 
     <h1> Talking to: {otherUser.username} </h1>
 
-    {/* <NewComment postId={post.id} handleClick={() => setRemount(!remount)}></NewComment> 
+    <button onClick={() => setRemount(!remount)}>Refresh</button> 
 
-    {console.log(comments)}
+    {console.log(messages)}
 
     {messages && messages.map(message => {
 
       return (
-      <CommentDiv key={message.id} message={message}></CommentDiv>
+      // <div>{message.content}</div>
+      <MessageDiv key={message.id} message={message}></MessageDiv>
       )
 
-    })} */}
+    })} 
     
   </>
   )
