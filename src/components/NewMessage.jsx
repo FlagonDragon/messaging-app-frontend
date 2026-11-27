@@ -43,10 +43,9 @@ function NewMessage({ chatId, handleClick }) {
 
   return(
 
+    <div className="newMessageContainer"> 
 
     <form onSubmit={e => e.preventDefault()}>
-      
-    <div className="newMessageContainer"> 
 
       <textarea
         className="messageContent"
@@ -65,9 +64,9 @@ function NewMessage({ chatId, handleClick }) {
         >Submit</button>
       </div>
 
-    </div>
-
     </form>
+
+    </div>
       
   )
 
