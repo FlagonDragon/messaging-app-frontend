@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useLocation } from "react-router";
 import MessageDiv from "./MessageDiv";
+import NewMessage from "./NewMessage";
 
 async function fetchMessages(postId) {
 
@@ -73,6 +74,8 @@ function Chat() {
     })} 
 
     </div>
+
+    <NewMessage chatId={chat.id} handleClick={() => setRemount(!remount)}></NewMessage>
     
   </div>
   )
