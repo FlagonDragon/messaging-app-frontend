@@ -3,7 +3,7 @@
 }
 
 body {
-    background-color: midnightblue;
+    background-color: #AC1754;
     color: white;
 }
 
@@ -31,36 +31,44 @@ h3 {
     height: 150px;
 }
 
-.userMessage {
+.chatContainer {
     display: flex;
     flex-direction: column;
-    justify-content: start;
-    align-items: start;
-    background-color: greenyellow;
+    align-items: center;
+}
+
+.messagesContainer {
+    display: flex;
+    flex-direction: column;
+    border: 3px solid white;
+    margin: 30px;
+    width: 85%;
+    max-width: 800px;
+}
+
+.message {
+    display: flex;
+    flex-direction: column;
+    /* justify-content: start; */
+    /* align-items: start; */
     color: black;
     border: 3px solid black;
     border-radius: 10px;
     margin: 20px;
-    padding: 15px;
-    padding-left: 30px;
+    padding: 25px 50px;
     gap: 5px;
-    height: 75px;
+    width: fit-content;
+    max-width: 70%;
+    min-height: 70px;
+}
+
+.userMessage {
+    align-self: flex-end;
+    background-color: #FCF259;
 }
 
 .otherUserMessage {
-    display: flex;
-    flex-direction: column;
-    justify-content: start;
-    align-items: start;
-    background-color: hotpink;
-    color: black;
-    border: 3px solid black;
-    border-radius: 10px;
-    margin: 20px;
-    padding: 15px;
-    padding-left: 30px;
-    gap: 5px;
-    height: 75px;
+    background-color: #F7A8C4;
 }
 
 .newCommentContainer {

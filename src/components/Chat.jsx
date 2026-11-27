@@ -53,13 +53,15 @@ function Chat() {
   }, [chat.id, remount])
   
   return(
-  <>
+  <div className="chatContainer">
 
     <h1> {otherUser.username} </h1>
 
     <button onClick={() => setRemount(!remount)}>Refresh</button> 
 
     {console.log(messages)}
+
+    <div className="messagesContainer">
 
     {messages && messages.map(message => {
 
@@ -69,8 +71,10 @@ function Chat() {
       )
 
     })} 
+
+    </div>
     
-  </>
+  </div>
   )
 
 }

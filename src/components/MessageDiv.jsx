@@ -2,13 +2,9 @@ function MessageDiv({message, localUser}) {
 
   return(
 
-  <div className={localUser ? "userMessage" : "otherUserMessage"}> 
+  <div className={localUser ? "message userMessage" : "message otherUserMessage"}> 
 
     <div>{message.content}</div>
-    
-    <div>By {message.username}</div>
-
-    <div>{localUser ? 'true' : 'false'}</div>
       
   </div>
 
