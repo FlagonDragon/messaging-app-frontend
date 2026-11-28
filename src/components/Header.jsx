@@ -1,4 +1,4 @@
-import { useNavigate, Link } from "react-router";
+import { useNavigate } from "react-router";
 
 function Header({user, route}) {
 
@@ -31,9 +31,15 @@ function Header({user, route}) {
 
     return(
 
-    <div className="headerContainer"> 
+    <div className="headerContainer chats"> 
 
-      <div>HEYO CHATS HOME MENU</div>
+      <div className="div1">
+        THESE ARE YOUR CHATS
+      </div>
+
+      <div className="div2">
+        YOUR PROFILE
+      </div>
               
     </div>
 

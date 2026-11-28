@@ -25,6 +25,23 @@ h3 {
 
 /* chats */
 
+.headerContainer.chats {
+    display: grid;
+    grid-template-columns: 1fr 150px;
+    grid-template-rows: 1fr;
+}
+ 
+.headerContainer.chats div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 3px solid blue;
+}
+
+.headerContainer.chat .div3 {
+    cursor: pointer;
+}
+
 .chatsContainer {
     display: flex;
     flex-direction: column;
@@ -43,7 +60,6 @@ h3 {
 }
 
 /* chat */
-
 
 .headerContainer.chat {
     display: grid;
