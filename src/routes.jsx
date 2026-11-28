@@ -4,6 +4,7 @@ import { Navigate } from "react-router";
 // import Home from "./components/Home";
 import Chat from "./components/Chat";
 import Chats from "./components/Chats";
+import Profile from "./components/Profile";
 import SignUp from "./components/SignUp";
 import LogIn from "./components/LogIn";
 import ErrorPage from "./components/ErrorPage";
@@ -22,6 +23,11 @@ const routes = [
   {
     path: "chats/:chatId",
     element: <Chat />,
+    errorElement: <ErrorPage />
+  },
+  {
+    path: "profile/:userId",
+    element: <Profile />,
     errorElement: <ErrorPage />
   },
   {

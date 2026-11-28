@@ -1,5 +1,7 @@
 import { useNavigate } from "react-router";
 
+const userId = localStorage.getItem('id');
+
 function Header({user, route}) {
 
   const navigate = useNavigate();
@@ -13,13 +15,18 @@ function Header({user, route}) {
       <div 
         className="div1"
         onClick={() => navigate(`/chats`)}
-      >«</div>
+      >
+        «
+      </div>
 
       <div className="div2">
         <h1>{user.username}</h1>
       </div>
 
-      <div className="div3">
+      <div 
+        className="div3"
+        onClick={() => navigate(`/profile/${user.id}`)}
+      >
         PROFILE PIC
       </div>
               
@@ -37,7 +44,10 @@ function Header({user, route}) {
         THESE ARE YOUR CHATS
       </div>
 
-      <div className="div2">
+      <div 
+        className="div2"
+        onClick={() => navigate(`/profile/${userId}`)}
+      >
         YOUR PROFILE
       </div>
               
