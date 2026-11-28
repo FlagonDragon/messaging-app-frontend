@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router";
-import ChatDiv from "./ChatDiv";
+import Preview from "./Preview";
 import Header from "./Header";
 
 const userId = localStorage.getItem('id');
@@ -78,7 +78,7 @@ function Chats() {
 
     <Header route='chats'></Header>
 
-    <h1> Chats </h1>
+    <div className="chatsContainer">
 
     {chats && chats.map(chat => {
 
@@ -93,13 +93,15 @@ function Chats() {
           onClick={() => {handleClick(chat.id, {chat: chat, otherUser: otherUser})}}
         >
 
-          <ChatDiv username={otherUser.username}></ChatDiv>
+          <Preview username={otherUser.username}></Preview>
 
         </div>
 
       )
 
     })}
+
+    </div>
 
   </>
   )
