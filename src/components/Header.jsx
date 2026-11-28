@@ -1,7 +1,5 @@
 import { useNavigate } from "react-router";
 
-const localName= localStorage.getItem('user');
-
 function Header({user, route}) {
 
   const navigate = useNavigate();
@@ -18,7 +16,7 @@ function Header({user, route}) {
 
       <div 
         className="div2"
-        onClick={() => navigate(`/profile/${localName}`, { state: localName } )}
+        onClick={() => navigate(`/profile/${user.username}`, { state: user } )}
       >
         YOUR PROFILE
       </div>
@@ -46,7 +44,7 @@ function Header({user, route}) {
 
       <div 
         className="div3"
-        onClick={() => navigate(`/profile/${user.username}`, { state: user.username } )}
+        onClick={() => navigate(`/profile/${user.username}`, { state: user } )}
       >
         PROFILE PIC
       </div>

@@ -5,6 +5,26 @@ import Header from "./Header";
 
 const userId = localStorage.getItem('id');
 
+async function fetchLocalUser() {
+
+  const localUsername = localStorage.getItem('user');
+
+  try {
+
+  const response = await fetch(`https://messaging-app-f3bk.onrender.com/user/${localUsername}`)
+
+  let userData = await response.json();
+
+  return userData;
+
+  } catch (error) {
+
+    console.log(error);
+
+  }
+
+};
+
 async function fetchChats() {
 
   try {
@@ -27,6 +47,7 @@ async function fetchChats() {
 
 function Chats() {
   const [chats, setChats] = useState(null);
+  const [localUser, setLocalUser] = useState(null);
 
   const navigate = useNavigate();
 
@@ -36,7 +57,7 @@ function Chats() {
   
   function findOtherUser(arr) {
 
-    var otherUser = '';
+    var otherUser;
 
     arr.forEach(user => {
 
@@ -53,13 +74,16 @@ function Chats() {
 
   useEffect(() => {
   
-    async function fetchChatsWrapper() {
+    async function setUpWrapper() {
 
       try {        
 
-        const data = await fetchChats();
+        const chatData = await fetchChats();
+        const userData = await fetchLocalUser();
         
-        setChats(data);
+        setChats(chatData);
+        setLocalUser(userData);
+
         
       } catch (error) {
         console.error(error);
@@ -67,16 +91,17 @@ function Chats() {
 
     }
 
-    fetchChatsWrapper();
+    setUpWrapper();
   
   }, [])
 
   console.log(chats);
+  console.log(localUser);
  
   return(
   <>
 
-    <Header route='chats'></Header>
+    <Header route='chats' user={localUser}></Header>
 
     <div className="chatsContainer">
 
