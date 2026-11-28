@@ -84,7 +84,7 @@ function Chats() {
 
       let otherUser = findOtherUser(chat.users);
 
-      console.log(otherUser.username);
+      // console.log(otherUser.username);
       
       return (
       

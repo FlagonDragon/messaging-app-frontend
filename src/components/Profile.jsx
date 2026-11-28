@@ -1,18 +1,18 @@
 import { useState, useEffect } from "react";
 import { useLocation } from "react-router";
-import MessageDiv from "./MessageDiv";
-import NewMessage from "./NewMessage";
 import Header from "./Header";
 
-async function fetchMessages(postId) {
+async function fetchUser(username) {
+
+  console.log(username);
 
   try {
 
-  const response = await fetch(`https://messaging-app-f3bk.onrender.com/chat-messages/${postId}`)
+  const response = await fetch(`https://messaging-app-f3bk.onrender.com/user/${username}`)
 
-  let messagesData = await response.json();
+  let userData = await response.json();
 
-  return messagesData;
+  return userData;
 
   } catch (error) {
 
@@ -22,27 +22,26 @@ async function fetchMessages(postId) {
 
 };
 
-function Chat() {
-  const [messages, setMessages] = useState(null);
-  const [remount, setRemount] = useState(false);
+function Profile() {
+  const [user, setUser] = useState(null);
 
-  const chat = useLocation().state.chat;
+  const username = useLocation().state;
 
-  const otherUser = useLocation().state.otherUser;
-
-  console.log(chat);
-  console.log(otherUser);
-
+  console.log('username is:');
+  console.log(username);  
+  
   useEffect(() => {
+
+    console.log('USE EFFECT FIRING');
+    
       
-    async function fetchMessagesWrapper() {
+    async function fetchUserWrapper() {
 
       try {        
 
-        const data = await fetchMessages(chat.id);
+        const data = await fetchUser(username);
         console.log(data);
-        setMessages([]);
-        setMessages(data);        
+        setUser(data);        
         
       } catch (error) {
         console.error(error);
@@ -50,40 +49,29 @@ function Chat() {
 
     }
 
-    fetchMessagesWrapper();
+    fetchUserWrapper();
       
-  }, [chat.id, remount])
+  }, [username])
+
+  console.log('user is:');
+  console.log(user);
   
+  if (user) {
   return(
-  <div className="chatContainer">
+  <div className="profileContainer">
 
-    <Header route='chat' user={otherUser}></Header>
+    <Header route='chats' user={user}></Header>
 
-    <button
-      className="refreshBtn"
-      onClick={() => setRemount(!remount)}
-    >Refresh</button> 
-
-    {console.log(messages)}
-
-    <div className="messagesContainer">
-
-    {messages && messages.map(message => {
-
-      return (
-      // <div>{message.content}</div>
-      <MessageDiv key={message.id} message={message} localUser={message.username == localStorage.getItem('user')}></MessageDiv>
-      )
-
-    })} 
-
+    <div>
+      HEY FELLA, THIS IS {user.username}'s PROFILE PAGE'
     </div>
 
-    <NewMessage chatId={chat.id} handleClick={() => setRemount(!remount)}></NewMessage>
+    <div>WHYYYYYYYYYYY</div>
     
   </div>
   )
+  }
 
 }
 
-export default Chat;
+export default Profile;

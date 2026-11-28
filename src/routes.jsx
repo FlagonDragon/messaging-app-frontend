@@ -26,7 +26,7 @@ const routes = [
     errorElement: <ErrorPage />
   },
   {
-    path: "profile/:userId",
+    path: "profile/:username",
     element: <Profile />,
     errorElement: <ErrorPage />
   },

@@ -1,12 +1,33 @@
 import { useNavigate } from "react-router";
 
-const userId = localStorage.getItem('id');
+const localName= localStorage.getItem('user');
 
 function Header({user, route}) {
 
   const navigate = useNavigate();
 
-  if (route == 'chat') {
+  if (route == 'chats') {
+
+    return(
+
+    <div className="headerContainer chats"> 
+
+      <div className="div1">
+        THESE ARE YOUR CHATS
+      </div>
+
+      <div 
+        className="div2"
+        onClick={() => navigate(`/profile/${localName}`, { state: localName } )}
+      >
+        YOUR PROFILE
+      </div>
+              
+    </div>
+
+    )
+
+  } else if (route == 'chat') {
 
     return(
 
@@ -25,30 +46,9 @@ function Header({user, route}) {
 
       <div 
         className="div3"
-        onClick={() => navigate(`/profile/${user.id}`)}
+        onClick={() => navigate(`/profile/${user.username}`, { state: user.username } )}
       >
         PROFILE PIC
-      </div>
-              
-    </div>
-
-    )
-
-  } else if (route == 'chats') {
-
-    return(
-
-    <div className="headerContainer chats"> 
-
-      <div className="div1">
-        THESE ARE YOUR CHATS
-      </div>
-
-      <div 
-        className="div2"
-        onClick={() => navigate(`/profile/${userId}`)}
-      >
-        YOUR PROFILE
       </div>
               
     </div>
