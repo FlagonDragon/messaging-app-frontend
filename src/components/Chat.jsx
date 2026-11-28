@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useLocation } from "react-router";
 import MessageDiv from "./MessageDiv";
 import NewMessage from "./NewMessage";
+import Header from "./Header";
 
 async function fetchMessages(postId) {
 
@@ -56,9 +57,12 @@ function Chat() {
   return(
   <div className="chatContainer">
 
-    <h1> {otherUser.username} </h1>
+    <Header route='chat' user={otherUser}></Header>
 
-    <button onClick={() => setRemount(!remount)}>Refresh</button> 
+    <button
+      className="refreshBtn"
+      onClick={() => setRemount(!remount)}
+    >Refresh</button> 
 
     {console.log(messages)}
 

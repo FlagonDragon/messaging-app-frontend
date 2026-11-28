@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router";
 import ChatDiv from "./ChatDiv";
+import Header from "./Header";
 
 const userId = localStorage.getItem('id');
 
@@ -74,6 +75,8 @@ function Chats() {
  
   return(
   <>
+
+    <Header route='chats'></Header>
 
     <h1> Chats </h1>
 
